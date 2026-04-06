@@ -20,3 +20,7 @@ Route::get("profile/{id}/user",[UserController::class,'show_user_from_profileId'
 Route::post("profile/update/{id}",[ProfileController::class,'update_profile_with_userId']);
 
 Route::delete("Task/delete_low",[TaskController::class,'deleteLow']);
+
+Route::get("user/{id}/tasks",[TaskController::class,'show_task_by_userId']);
+
+Route::get("task/{id}/user",[UserController::class,'show_user_from_taskId']);

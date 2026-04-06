@@ -12,8 +12,12 @@ class User extends Model
         "password"
     ];
 
-    public function Profile(){
+    public function profile(){
         return $this->hasone(Profile::class);
+    }
+
+    public function tasks (){
+        return $this->hasMany(Task::class);
     }
     
 }

@@ -23,6 +23,7 @@ class StoreTaksRequest extends FormRequest
     public function rules(): array
     {
         return [
+            "user_id" => "integer | required | exists:users,id",
             "title" => "string | required",
             "description" => "string | required",
             "priority" => "integer | required"
