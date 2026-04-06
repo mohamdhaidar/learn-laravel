@@ -57,6 +57,6 @@ This project is built for learning purposes, and it will be improved over time ð
 
 <h2>ðŸ‘¤ Author</h2>
 <p>
-Your Name
-</p>
  Haidar Alhakeem
+</p>
+
