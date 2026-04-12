@@ -13,5 +13,5 @@ class Category extends Model
     public function tasks(){
         return $this->belongsToMany(Task::class,"category_task","category_id","task_id")
             ->withTimestamps();
-    } 
+    }
 }

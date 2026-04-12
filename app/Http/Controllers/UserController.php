@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $profile = Profile::find($id);
         if (!$profile)
-            return response()->json(["messege" => "there is no profile with this id"], 404);
+            return response()->json(["message" => "there is no profile with this id"], 404);
 
         return response()->json([ $profile->user], 200);
     }
@@ -29,7 +29,7 @@ class UserController extends Controller
         $task=Task::find($id);
 
         if (!$task)
-            return response()->json(["messege" => "there is no task with this id"], 404);   
+            return response()->json(["message" => "there is no task with this id"], 404);
 
         $user=$task->user()->get();
 

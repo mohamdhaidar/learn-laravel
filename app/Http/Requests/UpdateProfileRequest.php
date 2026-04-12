@@ -25,7 +25,7 @@ class UpdateProfileRequest extends FormRequest
         return [
             "bio" => "string | required",
             "phone" => "string",
-            "adress" => "string"
+            "address" => "string"
         ];
     }
 }

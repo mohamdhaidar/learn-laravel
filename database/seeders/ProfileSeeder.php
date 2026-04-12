@@ -18,19 +18,19 @@ class ProfileSeeder extends Seeder
                 'user_id' => 1,
                 'bio' => 'Laravel backend developer',
                 'phone' => '0999000001',
-                'adress' => 'Damascus'
+                'address' => 'Damascus'
             ],
             [
                 'user_id' => 2,
                 'bio' => 'PHP and MySQL learner',
                 'phone' => '0999000002',
-                'adress' => 'Aleppo',
+                'address' => 'Aleppo',
             ],
             [
                 'user_id' => 3,
                 'bio' => 'API development practice',
                 'phone' => '0999000003',
-                'adress' => 'Homs',
+                'address' => 'Homs',
             ]
         ];
 

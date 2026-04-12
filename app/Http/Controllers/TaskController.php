@@ -67,12 +67,12 @@ class TaskController extends Controller
         $user=User::find($id);
 
         if (!$user)
-            return response()->json(["messege"=>"there is no user with this id "], 404);
+            return response()->json(["message"=>"there is no user with this id "], 404);
 
         $tasks=$user->tasks()->get();
 
         return response()->json([$user,$tasks], 200);
-    } 
+    }
 
     public function addCatToTask($taskId,Request $re)
     {
@@ -81,7 +81,6 @@ class TaskController extends Controller
         if (!$task)
             return response()->json(["message"=>"there is no task with this id "], 404);
 
-        $real=$task->categories()->attach($re->category_id);
         return response()->json(["message"=>"Category added to task"], 200);
     }
 

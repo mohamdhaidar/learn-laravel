@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProfileRequest extends FormRequest
 {
-    
+
     public function authorize(): bool
     {
         return true;
@@ -24,7 +24,7 @@ class StoreProfileRequest extends FormRequest
             "user_id" => "integer | required | exists:users,id",
             "bio" => "string",
             "phone" => "string",
-            "adress" => "string"
+            "address" => "string"
         ];
     }
 }

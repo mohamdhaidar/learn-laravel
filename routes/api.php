@@ -4,7 +4,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CatigoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('tasks', TaskController::class);
@@ -18,7 +17,6 @@ Route::post("user/store", [UserController::class, 'store']);
 Route::get("profile/{id}/user", [UserController::class, 'show_user_from_profileId']);
 
 Route::post("profile/store", [ProfileController::class, 'store']);
-Route::get("profile/show_profile/{id}", [ProfileController::class, 'show_profile']);
 Route::get("user/{id}/profile", [ProfileController::class, 'show_profile_from_userId']);
 Route::post("profile/update/{id}", [ProfileController::class, 'update_profile_with_userId']);
 
