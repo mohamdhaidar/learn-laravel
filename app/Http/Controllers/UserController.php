@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LogInRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\Profile;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -47,9 +49,28 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                ]
+            ]
         );
         return response()->json(["message" => "user registered successfully", $user], 201);
+    }
+
+    public function login(LogInRequest $request)
+    {
+        $user = User::where('email', $request->email)->firstOrFail();
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response()->json(["message" => "invalid email or password"], 401);
+        }
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json(['message' => 'Login successful', 'user' => $user, 'token' => $token], 201);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json(['message' => 'Logout successful'], 200);
     }
 
 }
