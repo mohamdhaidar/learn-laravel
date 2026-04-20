@@ -11,7 +11,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource('tasks', TaskController::class);
+Route::apiResource('tasks', TaskController::class)->middleware('auth:sanctum');
 Route::get("user/{id}/tasks", [TaskController::class, 'show_task_by_userId']);
 Route::delete("Task/delete_low", [TaskController::class, 'deleteLow']);
 Route::post("task/{id}/cat", [TaskController::class, "addCatToTask"]);
@@ -27,7 +27,7 @@ Route::get("logout", [UserController::class, 'logout'])->middleware('auth:sanctu
 
 
 Route::post("profile/store", [ProfileController::class, 'store']);
-Route::get("user/{id}/profile", [ProfileController::class, 'show_profile_from_userId']);
+Route::get("user/profile", [ProfileController::class, 'show_profile_of_user'])->middleware('auth:sanctum');
 Route::post("profile/update/{id}", [ProfileController::class, 'update_profile_with_userId']);
 
 Route::post("category/store", [CategoryController::class, 'store']);

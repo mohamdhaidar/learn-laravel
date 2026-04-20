@@ -10,7 +10,7 @@ class Profile extends Model
         "user_id",
         "bio",
         "phone",
-        "adress"
+        "address"
     ];
 
     public function user(){
