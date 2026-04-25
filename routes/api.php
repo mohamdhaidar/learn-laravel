@@ -12,10 +12,10 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::apiResource('tasks', TaskController::class)->middleware('auth:sanctum');
-Route::get("user/{id}/tasks", [TaskController::class, 'show_task_by_userId']);
-Route::delete("Task/delete_low", [TaskController::class, 'deleteLow']);
+Route::delete("task/delete_low", [TaskController::class, 'deleteLow']);
 Route::post("task/{id}/cat", [TaskController::class, "addCatToTask"]);
 Route::get("task/{id}/categories", [TaskController::class, "show_cat_of_task"]);
+Route::get('task/all', [TaskController::class, 'allTasks'])->middleware('auth:sanctum')->middleware('checkAdmin');
 
 Route::get("task/{id}/user", [UserController::class, 'show_user_from_taskId']);
 Route::post("user/store", [UserController::class, 'store']);
@@ -31,4 +31,3 @@ Route::get("user/profile", [ProfileController::class, 'show_profile_of_user'])->
 Route::post("profile/update/{id}", [ProfileController::class, 'update_profile_with_userId']);
 
 Route::post("category/store", [CategoryController::class, 'store']);
-

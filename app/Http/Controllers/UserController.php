@@ -40,16 +40,17 @@ class UserController extends Controller
         $user = $task->user()->get();
 
         return response()->json([$user], 200);
-
     }
 
     public function register(RegisterRequest $request)
     {
         $request->validated();
-        $user = User::create([
+        $user = User::create(
+            [
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'role' => $request->role ?? 'user',
             ]
         );
         return response()->json(["message" => "user registered successfully", $user], 201);
@@ -70,11 +71,10 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         /** @var \Laravel\Sanctum\PersonalAccessToken|null $token */
-        
+
         $token = $request->user()->currentAccessToken();
         $token?->delete();
 
         return response()->json(['message' => 'Logout successful'], 200);
     }
-
 }

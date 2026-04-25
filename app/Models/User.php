@@ -16,15 +16,21 @@ class User extends Authenticatable
     protected $fillable = [
         "name",
         "email",
-        "password"
+        "password",
+        'role'
     ];
 
-    public function profile(){
+    protected $attributes = [
+        'role' => 'user',
+    ];
+
+    public function profile()
+    {
         return $this->hasone(Profile::class);
     }
 
-    public function tasks (){
+    public function tasks()
+    {
         return $this->hasMany(Task::class);
     }
-
 }

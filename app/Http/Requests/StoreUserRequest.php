@@ -15,14 +15,14 @@ class StoreUserRequest extends FormRequest
         return true;
     }
 
-    
+
     public function rules(): array
     {
         return [
             "name" => "string | required",
             "email" => "string | required",
-            "password" => "string | required"
-
+            "password" => "string | required",
+            'role' => 'string',
         ];
     }
 }

@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+    public function allTasks()
+    {
+        $tasks = Task::all();
+        return response()->json($tasks, 200);
+    }
+
     public function store(StoreTaskRequest $request)
     {
         $user_id = Auth::user()->id;
