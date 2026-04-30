@@ -37,9 +37,9 @@ class TaskController extends Controller
         $user = Auth::user();
 
         if (!$user)
-            return response()->json(["message" => "i cant access to the user"], 403);
+            return response()->json(["message" => "i cant access"], 403);
 
-        $tasks = $user->tasks()->get();
+        $tasks = $user->tasks()->orderByRaw("FIELD(priority,'high','medium','low')")->get();
         return response()->json(["message" => "All Tasks for user id : $user->id", "data" => $tasks], 200);
     }
 

@@ -25,7 +25,7 @@ class StoreTaskRequest extends FormRequest
         return [
             "title" => "string | required",
             "description" => "string | required",
-            "priority" => "integer | required"
+            "priority" => "required | in:high,medium,low"
         ];
     }
 }
